@@ -2,7 +2,7 @@ name: Run Concert Finder Daily
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Runs at 8:00 AM UTC = 3:00 AM Chicago time
+    - cron: '2 8 * * *'  # Runs at 8:02 AM UTC = 3:00 AM Chicago time
   workflow_dispatch:  # Allows manual run
     inputs: {}
 
