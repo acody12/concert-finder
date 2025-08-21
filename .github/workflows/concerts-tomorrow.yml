@@ -1,0 +1,33 @@
+name: Check Tomorrow's Concerts
+
+on:
+  schedule:
+    - cron: '45 14 * * *'  # 14:45 UTC = 9:45 AM Chicago (CDT)
+  workflow_dispatch:  # Allows manual run
+    inputs: {}
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install spotipy requests beautifulsoup4 pandas pytz
+
+      - name: Run tomorrow check
+        env:
+          SPOTIPY_CLIENT_ID: ${{ secrets.SPOTIPY_CLIENT_ID }}
+          SPOTIPY_CLIENT_SECRET: ${{ secrets.SPOTIPY_CLIENT_SECRET }}
+          SPOTIPY_REDIRECT_URI: ${{ secrets.SPOTIPY_REDIRECT_URI }}
+          DAYS_IN_FUTURE: 1  # Look ahead 1 day (tomorrow)
+        run: |
+          python main.py

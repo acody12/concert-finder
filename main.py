@@ -30,7 +30,7 @@ class Config:
     LAT = 42.004414
     LON = -87.671304
 
-    DAYS_IN_FUTURE = 0
+    DAYS_IN_FUTURE = int(os.getenv("DAYS_IN_FUTURE", 0))
 
     AUTO_ADD_THRESHOLD = 0.85
     SKIP_THRESHOLD = 0.70
