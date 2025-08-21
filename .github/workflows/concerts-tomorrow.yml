@@ -2,7 +2,7 @@ name: Check Tomorrow's Concerts
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Every 15 minutes
+    - cron: '1 8 * * * *'  # # Runs at 8:01 AM UTC = 3:00 AM Chicago time
   workflow_dispatch:  # Allows manual run
     inputs: {}
 
