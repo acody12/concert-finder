@@ -1,4 +1,4 @@
-name: Create Day+3 Playlist
+name: Create Day+4 Playlist
 on:
   schedule:
     - cron: '37 8 * * *'    # 8:03 AM UTC = 3:03 AM Chicago time
